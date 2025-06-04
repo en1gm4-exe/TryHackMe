@@ -2,14 +2,14 @@
 
 
 # Walkthrough: 
-https://github.com/en1gm4-exe/CheeseCTF-TryHackMe/Walkthrough.md
+[https://github.com/en1gm4-exe/CheeseCTF-TryHackMe/Walkthrough.md](https://github.com/en1gm4-exe/TryHackMe/blob/main/CheeseCTF/WriteUp.md)
 
 
 
 
 ## 🚩 Attack Flow Summary
 1. **Initial Access**: SQLi bypass on login page → Gained web app access  
-   `admin' OR 1=1 --`  
+   `comte' OR 1=1 --`  
 2. **LFI Exploitation**:  
    ```bash
    ?file=php://filter/convert.base64-encode/resource=secret.php
