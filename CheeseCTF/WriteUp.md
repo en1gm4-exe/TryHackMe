@@ -6,11 +6,11 @@ This walkthrough details the step-by-step process of solving the CHEESE CTF, cov
 **Port Scanning**
 
 - Used Nmap to scan the first 1000 ports (nmap -p 1-1000 <TARGET_IP>).
-![1](https://github.com/user-attachments/assets/6c1e4b16-d992-4c8f-b08b-fc455a28bc96)
+![1](./images/1.png)
 
 - Found that FTP (21), SSH (22), and HTTP (80) were open.
 - Ran a detailed scan on these ports (nmap -sV -A -p 21,22,80 <TARGET_IP>) to identify services and versions.
-![2](https://github.com/user-attachments/assets/1f776c4e-bc01-4a6f-9c38-99f4233cb8fa)
+![1](./images/2.png)
 
 **FTP Enumeration**
 
