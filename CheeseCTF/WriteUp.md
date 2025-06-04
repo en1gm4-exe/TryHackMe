@@ -1,4 +1,4 @@
-# ROOT-ME | TryHackMe Room
+# CHEESE CTF | TryHackMe Room
 ![1](./images/0.png)
 This walkthrough details the step-by-step process of solving the CHEESE CTF, covering reconnaissance, exploitation, privilege escalation, and ultimately gaining root access. The target machine had several vulnerabilities, including SQL injection, Local File Inclusion (LFI), and misconfigured systemd timers.
 
