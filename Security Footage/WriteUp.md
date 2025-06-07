@@ -58,7 +58,7 @@ So, at top we have `HTTP GET` and then we got `200 OK` as server response to the
 
 
 <a> So, I used my python based tool to extract the data from the `.pcap`. <br>
-Tool's walkthrough is present on the tool's repo i.e. [PCAP_Extractor](https://github.com/en1gm4-exe?tab=repositories), for instance using cli version of my tool, I extracted the `JPEG` files using the command <br>
+Tool's walkthrough is present on the tool's repo i.e. [PCAP_Extractor](https://github.com/en1gm4-exe/PCAP-Forensic-Extractor), for instance using cli version of my tool, I extracted the `JPEG` files using the command <br>
 `python3 PCAP_Extractor.py security-footage-1648933966395.pcap -o Flag --jpg`
 <i>`-o` is used to name the output directory and `--jpg` is used to tell the tool to scan for jpg files only, since jpg and jpeg are interchangeable extensions. </i>
 ![image](https://github.com/user-attachments/assets/0a52d48a-7b76-498d-b0c3-6b2c7541e9d8)
