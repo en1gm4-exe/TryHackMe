@@ -1,12 +1,63 @@
   ![Banner](banner.png)
-# Easy Peasy
+# Security Footage 
+  <i>Perform digital forensics on a network capture to recover footage from a camera.</i> <br>
+  
+  [Link](https://tryhackme.com/room/securityfootage)
 
-  - [Task 1](#task-1-enumeration-through-nmap)
-  - [Task 2](#task-2-compromising-the-machine)
+  
 
-## Task 1 Enumeration through Nmap
+## Task 
+<a>Someone broke into our office last night, but they destroyed the hard drives with the security footage. Can you recover the footage? </a>
+<br>
+<br>
 
-<a>First we should check how many ports are open. To do so we will use [nmap](https://nmap.org/). We will use the `-p-` flag to scan all ports.<br>
+<a>We are given a `PCAP` file for forensics. i.e. [PCAP](https://github.com/en1gm4-exe/TryHackMe/blob/main/Security%20Footage/security-footage.pcap)<br>
+
+<a>First I opened the `.pcap` file in the [wireshark](https://www.wireshark.org/download.html) And I started inspecting the packets. First packet was TCP hand shake intializer, `TCP SYN` packet... </a>  <br>
+![image](https://github.com/user-attachments/assets/fa7a3885-517a-440d-bbca-91ac8ad8e843)
+
+
+<a> Second packet is `TCP ACK` in the hand shake... </a>
+![image](https://github.com/user-attachments/assets/34577f35-6f61-41a6-8d05-63e6ccd65deb)
+
+<a> Third packet shows the successful `TCP` hand shake... </a>
+![image](https://github.com/user-attachments/assets/39b86186-b333-4f67-bb82-219ca3224ef6)
+
+
+<a> Forth packet shows the `HTTP GET` request from the attacker... </a>
+![image](https://github.com/user-attachments/assets/21fcd182-5884-4730-8cc0-1cdef8431552)
+
+<a>After packet there is no more http protocol packet, so this means rest of the packets are the data tranfer to the attacker after that http request. </a>
+![image](https://github.com/user-attachments/assets/57ddcf28-d3a9-496d-93f8-10e79d111b05)
+
+<a>So, I followed the TCP Stream to have a better look at sequential communication or packet transfer.  To open the stream, <br>
+- Right Click on any packet
+- Then, hover the pointer on `Follow`
+- Click on the `TCP Stream` <br>
+
+Or  alternatively you can press `ctrl+alt+shift+T`  </a>
+![image](https://github.com/user-attachments/assets/a5d0842b-7b8a-4179-b65c-e59b1454ab37)
+
+<br>
+<br>
+
+<a>Once we are in the tcp stream tab, we can notice that there is only one stream in all and on the left side, there is `1 turn` between client and server, so whole communication started after that one `HTTP GET` message.</a>
+![image](https://github.com/user-attachments/assets/0dda1d98-0021-4336-b869-98080c7aa0d7)
+
+
+<a>So, let's take a look on the stream..</a>
+![image](https://github.com/user-attachments/assets/acae06f9-3aac-4f21-9710-5c26987cdc9c)
+
+<a> By setting the filter `show as` of the wireshark to `ASCII` , we can see the packet and we can identify the things happening in it.
+So, at top we have `HTTP GET` and then we got `200 OK` as server response to the request and the dat tranfer is done in the images as `Content-type` parameter shows the file type is images with extension of `JPEG`.
+</a>
+
+
+<br>
+<br>
+
+
+
 The full command is `nmap -A -T4 -p- MACHINE_IP`<br>
 This can take a long time but nmap returns us the following.</a>
 
