@@ -1,51 +1,60 @@
+  ![Banner](banner.png)
 # Easy Peasy
 
-  - [Task 1](#task-1)
-  - [Task 2](#task-2)
+  - [Task 1](#task-1-enumeration-through-nmap)
+  - [Task 2](#task-2-compromising-the-machine)
 
-## Task 1
+## Task 1 Enumeration through Nmap
 
 <i>First we should check how many ports are open. To do so we will use [nmap](https://nmap.org/). We will use the `-p-` flag to scan all ports.<br>
-The full command looks like this: `nmap -p- -sV MACHINE_IP`<br>
+The full command is `nmap -A -T4 -p- MACHINE_IP`<br>
 This can take a long time but nmap returns us the following.</i>
 
 <pre>
-PORT      STATE SERVICE VERSION
-<b>80/tcp</b>    open  http    nginx <b>1.16.1</b>
+  PORT      STATE SERVICE VERSION
+<b>80/tcp</b>    open  http    <b>nginx 1.16.1</b>
 | http-robots.txt: 1 disallowed entry 
 |_/
-|_http-server-header: nginx/1.16.1
 |_http-title: Welcome to nginx!
-<b>6498/tcp</b>  open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+|_http-server-header: nginx/1.16.1
+<b>6498/tcp</b>  open  ssh     <b>OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)</b>
 | ssh-hostkey: 
 |   2048 30:4a:2b:22:ac:d9:56:09:f2:da:12:20:57:f4:6c:d4 (RSA)
 |   256 bf:86:c9:c7:b7:ef:8c:8b:b9:94:ae:01:88:c0:85:4d (ECDSA)
 |_  256 a1:72:ef:6c:81:29:13:ef:5a:6c:24:03:4c:fe:3d:0b (ED25519)
-<b>65524/tcp</b> open  http    <b>Apache</b> httpd 2.4.43 ((Ubuntu))
+<b>65524/tcp</b> open  http    <b>Apache httpd 2.4.43 ((Ubuntu))</b>
 | http-robots.txt: 1 disallowed entry 
 |_/
 |_http-server-header: Apache/2.4.43 (Ubuntu)
 |_http-title: Apache2 Debian Default Page: It works
+Device type: general purpose
+Running: Linux 4.X
+OS CPE: cpe:/o:linux:linux_kernel:4.15
+OS details: Linux 4.15
+Network Distance: 2 hops
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 </pre>
 
+So to answer the questions;
 1. How many ports are open?<br>
    `3`
 
-<i>To detect the version of [nginx](https://nginx.org) we look at the output above.</i>
+<i>To detect the version of [nginx](https://nginx.org) we look at the output above and at port 80 we can see the verison of service running...</i>
 
 2. What is the version of nginx?<br>
    `1.16.1`
 
-<i>The output above also entails the answer to the last question.</i>
+<i>The output above also shows the answer to the last question. i.e. service running at port 65524 </i>
 
 3. What is running on the highest port?<br>
    `Apache`
 
-## Task 2
 
-<i>We can use [gobuster](https://github.com/OJ/gobuster) to search for hidden directories. By using the `-u` flag we can specify a url to attack. As a wordlist we will use the [`common.txt`](https://gitlab.com/kalilinux/packages/dirb/-/blob/kali/master/wordlists/common.txt).<br>
-The command: `gobuster dir -u "http://MACHINE_IP" -w ./common.txt`</i>
+## Task 2 Compromising the machine
+
+<i>We can use [gobuster](https://github.com/OJ/gobuster) or [ffuf](https://github.com/ffuf/ffuf) to search for hidden directories. By using the `-u` flag we can specify a url to attack. As a wordlist we will can use the [`common.txt`](https://github.com/danielmiessler/SecLists/blob/master/Discovery/Web-Content/common.txt), [`rockyou.txt`](https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt) or any of [`seclist`](https://github.com/danielmiessler/SecLists/tree/master/Discovery/Web-Content) wordlist.<br> 
+The command: will look like  `gobuster dir -u http://MACHINE_IP -w /path/to/common.txt` for gobuster and for ffuf
+`ffuf -u http://MACHINE_IP/FUZZ -w /path/to/common.txt`                </i>
 
 <pre>
 <b>/hidden</b> (Status: 301)
