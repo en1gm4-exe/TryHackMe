@@ -1,0 +1,4 @@
+echo "*.php linguist-detectable=true" > .gitattributes
+git add .gitattributes
+git commit -m "Force PHP detection"
+git push
