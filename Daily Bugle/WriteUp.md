@@ -76,9 +76,47 @@ and for ffuf `ffuf -u http://MACHINE_IP/administrator/FUZZ -w /path/to/Discovery
 
   Then, I tried to upload the `shell.php` in the `joomla` folder..
 
-  But unfortunately, It showed me the error for file uploading, then again I start exploring the files and I found, a official document of `joomla` which tells about the editing the files and making changes in them. So,
+  But unfortunately, It showed me the error for file uploading, then again I start exploring the files and I found, a official document of `joomla` which tells about the editing the files and making changes in them. So, I tried to edit files. and then I selected the `error.php` where I would be saving my reverse shell. 
 ![img](./images/13.png)   
 
+  After replacing the `error.php` with my reverse shell, I saved the `error.php` and it was saved succesfully.
+![img](./images/14.1.png)     
 
+  After this, I started the netcat listener on the `port` I added in the reverse shell. i.e. 
+
+<pre>
+  nc -lvnp 4444
+</pre> 
+
+I visited the the link 
+<pre>http://10.10.10.146/templates/protostar/error.php</pre>
+to trigger the reverse shell and we successfully got the shell in the listner, as the username `apache`.... 
+![img](./images/15.png)     
+
+  After I try to find the user flag in the home directory, and there was only one user at home i.e. `jjameson` but I couldn't access the home of that user.
+![img](./images/16.png)  
+
+## 4: Privilege Escalation
+## I - Lateral Movement
+  After this I started exploring the files and directories thinking there might be any clue about the user's access. And after sometime, I statred exploring the configuration files and in the html and apache configuration files I looked into a `configuration.php` where I found the `user`, `password` and a `secret` named string. 
+![img](./images/17.png)  
+
+  Beside this I didn't find anything related to login. So, I went to give this password and secret a attempt as my password for that user. 
+And to my suprise I was able to login into ssh shell using this password as password for `jjameson`.
+![img](./images/18.png)  
+  And that's how I was ablt to get the user flag present in the `user.txt` present in `home`.
 
   
+
+## II - Root Escalation
+  Now, it's time for root flag, firstly i tried to find the `sudo` privilege given to user `jjameson`. <br>
+    Using the command 
+    <pre> sudo -l </pre>
+  I got to know, `jjameson` have sudo privileges for the command-line package utility named `yum` 
+![img](./images/19.png)  
+
+  So, using this information, I tried to find as if I could escalate the privileges using the `yum`, For this , I looked into the [GTFOBins](https://gtfobins.github.io/gtfobins/yum/) exploits, and I found my desired exploit for privilege escalation to `root`. 
+![img](./images/20.png)
+
+  After this I just copied the exploit techniques and pasted into the shell, due to which I got the privileges for the `root` and getting shell as the `root`, I was able to retrieve the `root` flag, present in the `/root/root.txt` file
+ ![img](./images/21.png) 
