@@ -1,4 +1,10 @@
+# 1. Ensure .gitattributes exists
 echo "*.php linguist-detectable=true" > .gitattributes
-git add .gitattributes
-git commit -m "Force PHP detection"
+
+# 2. Add a tiny change to PHP files
+echo "<?php // Force PHP detection ?>" >> shell.php
+
+# 3. Push changes
+git add .gitattributes shell.php
+git commit -m "Force PHP detection in stats"
 git push
