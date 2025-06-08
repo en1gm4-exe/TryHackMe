@@ -66,9 +66,19 @@ and for ffuf `ffuf -u http://MACHINE_IP/administrator/FUZZ -w /path/to/Discovery
 ![img](./images/11.png)   
 
   After this I tried searching for any directory where I could find any uploading portal. In one of the directory I found the uploading portal so I attempt uploading test files but it didn't allowed me to save the file. So, I again start exploring the pages and directories... 
- <br> 
-   After sometime, I found the template directory where I found files realted to configurations. And it also allow me uploading files. So, I generated the reverse shell using the shell generator and saved the shell into the file named [shell.php](https://github.com/en1gm4-exe/TryHackMe/blob/main/Daily%20Bugle/shell.php) uploaded in this repo. 
-![img](./images/12.png)   
+ <br>
+ <br>
+   After sometime, I found the `template` directory where I found files realted to configurations. And it also allow me uploading files. 
+![img](./images/12.png)
+
+  So, I generated the reverse shell using the shell [generator](https://www.revshells.com/) and setting up `ip` and `port` in it, saved the shell into the file named [shell.php](https://github.com/en1gm4-exe/TryHackMe/blob/main/Daily%20Bugle/shell.php) uploaded in this repo. 
+![img](./images/x.png)   
+
+  Then, I tried to upload the `shell.php` in the `joomla` folder..
+
+  But unfortunately, It showed me the error for file uploading, then again I start exploring the files and I found, a official document of `joomla` which tells about the editing the files and making changes in them. So,
+![img](./images/13.png)   
+
 
 
   
