@@ -1,5 +1,7 @@
 # 🧠 TryHackMe – Writeups
 
+![image](https://github.com/user-attachments/assets/6b8b15d0-a8be-4843-8f90-bebbf73f009b)
+
 Welcome to my **TryHackMe** repository! This is a personal collection of  **writeups**, and **walkthroughs** created while solving THM machines, challenges, and labs.
 
 ## 📌 Purpose
