@@ -4,7 +4,7 @@
 # Net Sec Challenge
 
 ## Introduction
-  This walkthrough details my approach to solving the Network Security Challenge room on TryHackMe. The challenge tested various network security skills using tools like Nmap, Telnet, and Hydra. Below, I'll break down each task with detailed explanations and commands used.
+   This walkthrough details my approach to solving the Network Security Challenge room on TryHackMe. The challenge tested various network security skills using tools like Nmap, Telnet, and Hydra. Below, I'll break down each task with detailed explanations and commands used.
 
 
 
