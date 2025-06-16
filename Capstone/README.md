@@ -20,6 +20,7 @@ Let's get hacking...
 <br>
 
 > Initial Reconnaissance
+
   I began by performing a basic Nmap scan to identify open ports and services on the target machine (`10.10.170.8`)....
       
         nmap 10.10.170.8
