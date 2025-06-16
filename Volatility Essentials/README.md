@@ -221,7 +221,9 @@ We can use [Cheat Sheat](https://hackmd.io/@TuX-/BymMpKd0s) for the finding plgu
   Looking into the output, the suspicious process name is `@WanaDecryptor@`
 
 
-2 To find the path of the executable, I used the `dlllist` plugin. Along with the filter like `--pid` and `grep` for clear output. 
+<br>
+
+**2** To find the path of the executable, I used the `dlllist` plugin. Along with the filter like `--pid` and `grep` for clear output. 
   
     python3 vol.py -f ~/Desktop/Investigations/Investigation-2.raw windows.pslist --pid 740 | grep -E '@WanaDecryptor@' | column -t
   
@@ -229,23 +231,70 @@ We can use [Cheat Sheat](https://hackmd.io/@TuX-/BymMpKd0s) for the finding plgu
 
   Looking into the output we can identify the path for _`@WanaDecryptor@`_ file. i.e. `C:\Intel\ivecuqmanpnirkt615\@WanaDecryptor@.exe`
 
-Parent
+<br>
+
+**3** To identify the Parent process, I used the pstree plugin. At first, I run it with `grep` specifying the PID (Process ID) for the exceutable i.e. `740` 
+
+      python3 vol.py -f ~/Desktop/Investigations/Investigation-2.raw windows.pstree | grep "740"
+
+   By looking  in the respone of it, I found the PPID (Parent Process ID) i.e. `1940`. So I again run the command changing the PID in the grep to `1940`. 
+      
+      python3 vol.py -f ~/Desktop/Investigations/Investigation-2.raw windows.pstree | grep "1940"
+      
 ![image](https://github.com/user-attachments/assets/fb92a631-faff-4f6b-89f1-b86d2afa1c1a)
 
+   So , after these two steps I got the name of the parent process.. i.e. `tasksche.exe`
 
-dump
+
+<br>
+
+**4**  To identify the malware in our system we can simply judge by the name of the `.exe` (i.e. `WanaDecryptor`) that it is the `Wannacry` malware. But considering a situation where name is not properly shown, we can download the dump from the memory files.. for this we can use the `dumpfiles` plugin. For this we need to give the path of the existing directory where we will be saving the dump files. I also added the `PID` to specify the downloading instead of downloading all the dump files.
+
+      python3 vol.py -f ~/Desktop/Investigations/Investigation-2.raw -o ~/Desktop/output/ windows.dumpfiles --pid 740
+
 ![image](https://github.com/user-attachments/assets/cc5c0305-93f5-4b31-974d-fe842aadf5c0)
 
-hash...
+   After, I downloaded the dumpfiles, I simple found the hash of the `.exe` file using `md5sum`.
+
+      md5sum <filename.exe>
 ![image](https://github.com/user-attachments/assets/951fc4cf-2624-4658-95dd-8f02f3ec9e4f)
 
-virustotal..
+   After this, I pasted the hash into the [Virustotal](https://www.virustotal.com/gui/home/search)
+   
 ![image](https://github.com/user-attachments/assets/8ac4c293-40e5-499e-b608-a5273f21177e)
 
+   So, we can see Family labels ( `wanna`, `wannacryptor` , `wannacry`)
+
+<br>
+
+**5** To identify all files loaded from the malware working directory, we can use the `windows.filescan` plugin.
 
 ![image](https://github.com/user-attachments/assets/57f48507-70f7-4224-8a25-7e75e49d389c)
 
 
+> Findings:
+
+- **Malicious Process:** `@WanaDecryptor@.exe` (PID 740)
+- **Binary Path:** `C:\Intel\ivecuqmanpnirkt615\@WanaDecryptor@.exe`
+- **Parent Process:** `tasksche.exe` (PID 1940)
+- **MD5 Hash:** `c523cdfa774ddabfb3dc47f9ed945698`
+- **Malware:** `Wannacry`
+
+<br>
+
+## General Volatility Workflow
+
+- **Profile Identification:** `windows.info`
+- **Process Analysis:** `pslist`, `pstree`, `psscan`
+- **Malware Detection:** `malfind`, `vadinfo`
+- **File Extraction:** `dumpfiles`, `pedump`
+- **Network Analysis:** `netscan`, `netstat`
+- **Registry Forensics:** `hivelist`, `printkey`
+
+> Final Notes:
+- Always verify hashes with `VirusTotal`.
+- Use `yarascan` for custom rule detection.
+- Check for unlinked drivers (driverscan) in `rootkit` cases.
 
 
 
