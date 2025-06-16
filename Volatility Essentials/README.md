@@ -284,6 +284,8 @@ We can use [Cheat Sheat](https://hackmd.io/@TuX-/BymMpKd0s) for the finding plgu
 
 ## General Volatility Workflow
 
+![image](https://github.com/user-attachments/assets/0c6f4e76-38ba-4c69-9c85-b16b14dedd28)
+
 - **Profile Identification:** `windows.info`
 - **Process Analysis:** `pslist`, `pstree`, `psscan`
 - **Malware Detection:** `malfind`, `vadinfo`
