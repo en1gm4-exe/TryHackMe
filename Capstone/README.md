@@ -20,17 +20,26 @@ Let's get hacking...
 <br>
 
 > **What is the name of the application running on the vulnerable machine?**
-  
+  I ran the nmap scan 
+
+<br>
 
 > **What is the version number of this application?**
 
+<br>
+
 > **What is the number of the CVE that allows an attacker to remotely execute code on this application?**
 
+<br>
+
 > **Use the resources & skills learnt throughout this module to find and use a relevant exploit to exploit this vulnerability.**
+
+<br>
+
 
 > **What is the value of the flag located on this vulnerable machine? This is located in /home/ubuntu on the vulnerable machine.**
 
 
-
+<br>
 
 
