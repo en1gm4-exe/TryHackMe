@@ -183,7 +183,7 @@ The challenge page displayed:
 ![image](https://github.com/user-attachments/assets/6e70c5f1-7d65-4773-8423-b650bc9a51cb)
    So, I can see it was detected and IDS detection is working fine with my `Kali linux`.
 
-2. Used a Null scan (-sN) to avoid detection.
+2. Used a Null scan (`-sN`) to avoid detection.
 
 **Command:**
 
@@ -196,3 +196,7 @@ The challenge page displayed the flag.:
 **Answer:** The flag is `THM{744399}`.
 
 
+
+## Conclusion
+
+   This challenge provided hands-on practice with essential network security tools like `Nmap`, `Telnet`, and `Hydra`. By systematically scanning ports, analyzing service banners, and brute-forcing credentials, I successfully uncovered all hidden flags. The key takeaway is the importance of using stealthy scanning techniques and leveraging brute-force tools responsibly to identify vulnerabilities.
