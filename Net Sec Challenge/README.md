@@ -15,7 +15,27 @@ Target IP Address: 10.10.68.75
 
 
 
+## Task 2: Challenge Questions
+
+### Q-1: Highest Port Number Open Below 10,000
+
+**Objective:** Identify the highest port number below 10,000 that is open on the target machine.
+
+**Approach:** 
+- Used Nmap to perform a SYN scan (-sS) on ports 1 through 10,000 (-p1-10000).
+- The -T4 flag was added for faster scanning.
+
+**Command:**
+      
+      nmap -sS -T4 -p1-10000 10.10.68.75
+**Output:**
 ![image](https://github.com/user-attachments/assets/571984da-e84c-482a-a4e8-efef72cdc5cb)
+**Answer:** The highest open port below 10,000 is `8080`.
+
+
+
+
+
 
 ![image](https://github.com/user-attachments/assets/01cafa28-93d8-4718-879f-0cefb75fa55a)
 
