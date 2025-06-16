@@ -49,6 +49,9 @@ Our version is `1.4`
 
 <br>
 
+> Vulnerability Research
+
+
 ### **What is the number of the CVE that allows an attacker to remotely execute code on this application?**
 
   Through online research, I identified the relevant vulnerability:  
@@ -60,6 +63,8 @@ Our version is `1.4`
 
 
 <br>
+
+> Exploitation
 
 ### **Use the resources & skills learnt throughout this module to find and use a relevant exploit to exploit this vulnerability.**
 
@@ -89,7 +94,11 @@ However, this only returned `system` responses without proper command execution.
 
 ![image](https://github.com/user-attachments/assets/2961243f-8902-4247-bf86-12b270191ee6)
 
-  
+  So, I cloned that repo.
+      
+      git clone https://github.com/p0dalirius/CVE-2018-16763-FuelCMS-1.4.1-RCE.git
+
+  And checking the help manual, I successfully executed some commands...
 
 ![image](https://github.com/user-attachments/assets/8ed00645-e477-4853-9485-81b78146baf4)
 
@@ -100,10 +109,19 @@ However, this only returned `system` responses without proper command execution.
 
 ### **What is the value of the flag located on this vulnerable machine? This is located in /home/ubuntu on the vulnerable machine.**
 
+  I tried changing the directory but it wasn't working. So, I simply retrieve the flag using the path..
+
+      cat /home/ubuntu/flag.txt 
+      
 ![image](https://github.com/user-attachments/assets/e6ba1026-b648-4ef7-9180-54d3b3fdeb14)
 
 
+So, our final flag is `THM{ACKME_BLOG_HACKED}`
 
 <br>
 
+
+## Summary
+
+  This room provides invaluable `hands-on` experience in `real-world` vulnerability assessment and exploitation, helping bridge the gap between theoretical knowledge and practical cybersecurity skills. By walking through the process of identifying an outdated Fuel CMS system, researching its `CVE-2018-16763` vulnerability, and successfully executing a remote code exploitation, you've gained critical competencies that directly translate to penetration testing and security auditing scenarios. The exercise sharpens essential technical abilities like using Nmap for service discovery, analyzing exploit code, and performing post-exploitation activities - all while developing the analytical mindset needed to assess web application security. More importantly, it demonstrates how unpatched systems and poor configuration management create serious risks in production environments, emphasizing why proactive vulnerability management is crucial for organizations. These skills are immediately applicable to bug bounty hunting, red team operations, and defensive security hardening, making this room an excellent stepping stone for building your offensive security expertise and understanding real-world attack vectors. The practical lessons learned here about exploit persistence, vulnerability chaining, and system hardening form a strong foundation for more advanced security challenges.
 
