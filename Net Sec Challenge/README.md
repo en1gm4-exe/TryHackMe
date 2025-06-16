@@ -6,9 +6,11 @@
 ## Introduction
    This walkthrough details my approach to solving the Network Security Challenge room on TryHackMe. The challenge tested various network security skills using tools like Nmap, Telnet, and Hydra. Below, I'll break down each task with detailed explanations and commands used.
 
+<br>
 
-
-
+## Task 1: Setup
+   Before starting, I launched the AttackBox and the target VM with the following details:
+Target IP Address: 10.10.68.75
 ![image](https://github.com/user-attachments/assets/f8fad8a2-076b-41a6-ac36-89c8c501f4ea)
 
 
