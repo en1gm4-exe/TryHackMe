@@ -19,7 +19,7 @@ Let's get hacking...
 
 <br>
 
-### Initial Reconnaissance
+> Initial Reconnaissance
   I began by performing a basic Nmap scan to identify open ports and services on the target machine (`10.10.170.8`)....
       
         nmap 10.10.170.8
@@ -29,7 +29,7 @@ Let's get hacking...
 
 <br>
 
-> **What is the name of the application running on the vulnerable machine?**
+### **What is the name of the application running on the vulnerable machine?**
   
   I try visiting the HTTP service at `http://10.10.170.8`.
 
@@ -40,7 +40,7 @@ So, the web application name revealed i.e `Fuel CMS`
 
 <br>
 
-> **What is the version number of this application?**
+### **What is the version number of this application?**
 
   If we keep looking in the web application... we can find the verson.
 ![image](https://github.com/user-attachments/assets/eda85b92-82a6-4963-91fe-358878ea5aea)
@@ -49,7 +49,7 @@ Our version is `1.4`
 
 <br>
 
-> **What is the number of the CVE that allows an attacker to remotely execute code on this application?**
+### **What is the number of the CVE that allows an attacker to remotely execute code on this application?**
 
   Through online research, I identified the relevant vulnerability:  
 
@@ -61,7 +61,7 @@ Our version is `1.4`
 
 <br>
 
-> **Use the resources & skills learnt throughout this module to find and use a relevant exploit to exploit this vulnerability.**
+### **Use the resources & skills learnt throughout this module to find and use a relevant exploit to exploit this vulnerability.**
 
   I try to find the exploit in the google specifically enlisted in `exploit-db`.
 
@@ -98,7 +98,7 @@ However, this only returned `system` responses without proper command execution.
 <br>
 
 
-> **What is the value of the flag located on this vulnerable machine? This is located in /home/ubuntu on the vulnerable machine.**
+### **What is the value of the flag located on this vulnerable machine? This is located in /home/ubuntu on the vulnerable machine.**
 
 ![image](https://github.com/user-attachments/assets/e6ba1026-b648-4ef7-9180-54d3b3fdeb14)
 
